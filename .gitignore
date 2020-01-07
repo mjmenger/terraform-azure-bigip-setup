@@ -1,0 +1,17 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# Terraform crash log
+**/crash.log
+
+# Go Tests
+**/vendor
+**/Gopkg.toml
+**/Gopkg.lock
