@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "main" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
-    name                        = format("%sdiagstorage%s",var.prefix,"aefd")
+    name                        = format("%sdiagstorage%s",var.prefix,random_id.randomId.hex)
     resource_group_name         = azurerm_resource_group.main.name
     location                    = azurerm_resource_group.main.location
     account_tier                = "Standard"
