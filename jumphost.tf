@@ -146,7 +146,7 @@ resource "null_resource" "transfer" {
         connection {
             type        = "ssh"
             user        = "azureuser"
-            private_key = file(var.privatekeyfile)
+            private_key = var.privatekeyfile
             host        = azurerm_public_ip.jh_public_ip[count.index].ip_address
         }
     }
