@@ -38,7 +38,7 @@ resource "azurerm_virtual_machine" "jumphost" {
         disable_password_authentication = true
         ssh_keys {
             path     = "/home/azureuser/.ssh/authorized_keys"
-            key_data = file(var.publickeyfile)
+            key_data = var.publickeyfile
         }
     }
 
