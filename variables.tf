@@ -17,7 +17,7 @@ variable "environment" {
 }
 
 variable "prefix" {
-    default = "tfdemo"
+    default = "mjmtfdemo"
 }
 
 variable "application_count" {
