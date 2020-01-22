@@ -1,4 +1,4 @@
-# Create F5 BIGIP VMs
+# Create F5 BIGIP VMs 
 resource "azurerm_virtual_machine" "f5bigip" {
     count                        = length(var.azs)
     name                         = format("%s-bigip-%s-%s",var.prefix,count.index,random_id.randomId.hex)
