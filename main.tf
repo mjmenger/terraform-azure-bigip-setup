@@ -3,6 +3,15 @@ provider "azurerm" {
 
 }
 
+terraform {
+    backend "azurerm" {
+        resource_group_name   = "mjmengertstate"
+        storage_account_name  = "tstate11974"
+        container_name        = "tstate"
+        key                   = "terraform.tfstate"
+    }
+}
+
 # Create a resource group if it doesn’t exist
 resource "azurerm_resource_group" "main" {
     name     = format("%s-resourcegroup-%s",var.prefix,random_id.randomId.hex)
