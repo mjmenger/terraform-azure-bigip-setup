@@ -137,7 +137,7 @@ resource "azurerm_network_interface" "mgmt-nic" {
 
 # Create Application Traffic Network Security Group and rule
 resource "azurerm_network_security_group" "application_sg" {
-    name                = format("%s-app_sg-%s",var.prefix,random_id.randomId.hex)
+    name                = format("%s-application_sg-%s",var.prefix,random_id.randomId.hex)
     location            = azurerm_resource_group.main.location
     resource_group_name = azurerm_resource_group.main.name
 
