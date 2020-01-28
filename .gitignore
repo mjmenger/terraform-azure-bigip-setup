@@ -15,3 +15,7 @@
 **/vendor
 **/Gopkg.toml
 **/Gopkg.lock
+
+# key files
+*.pem
+*.ppk
