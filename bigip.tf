@@ -58,9 +58,9 @@ resource "azurerm_virtual_machine" "f5bigip" {
 resource "azurerm_virtual_machine_extension" "run_startup_cmd" {
     count                = length(var.azs)
     name                 = format("%s-bigip-startup-%s-%s",var.prefix,count.index,random_id.randomId.hex)
-    location             = azurerm_resource_group.main.location
-    resource_group_name  = azurerm_resource_group.main.name
-    virtual_machine_name = azurerm_virtual_machine.f5bigip[count.index].name
+    #location            = azurerm_resource_group.main.location
+    #resource_group_name = azurerm_resource_group.main.name
+    virtual_machine_id   = azurerm_virtual_machine.f5bigip[count.index].name
     publisher            = "Microsoft.OSTCExtensions"
     type                 = "CustomScriptForLinux"
     type_handler_version = "1.2"
