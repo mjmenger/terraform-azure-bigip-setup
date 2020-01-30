@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "azs" {
-    default = ["1","2"]
+    default = ["1","3"]
 }
 
 variable "cidr" {
@@ -32,7 +32,7 @@ variable "privatekeyfile" {
 }
 # BIGIP Image
 # https://github.com/F5Networks/f5-azure-arm-templates/blob/v7.0.0.2/supported/standalone/1nic/new-stack/payg/azuredeploy.json
-variable instance_type	{ default = "Standard_DS4_v2" }
+variable instance_type	{ default = "Standard_DS3_v2" }
 variable image_name	{ default = "f5-bigip-virtual-edition-25m-best-hourly" }
 variable product	{ default = "f5-big-ip-best" }
 variable bigip_version	{ default = "14.1.003000" }
