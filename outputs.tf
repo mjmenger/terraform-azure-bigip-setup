@@ -14,7 +14,7 @@ output "bigip_password" {
     value = random_password.password.result
 }
 
-output "ec2_key_name" {
+output "key_name" {
     value = var.privatekeyfile
 }
 

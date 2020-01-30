@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "azs" {
-    default = ["1","2"]
+    default = ["1","3"]
 }
 
 variable "cidr" {
