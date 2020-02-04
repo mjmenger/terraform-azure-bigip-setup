@@ -6,7 +6,7 @@ resource "azurerm_virtual_machine" "f5bigip" {
     resource_group_name          = azurerm_resource_group.main.name
     primary_network_interface_id = azurerm_network_interface.mgmt-nic[count.index].id
     network_interface_ids        = [azurerm_network_interface.mgmt-nic[count.index].id, azurerm_network_interface.ext-nic[count.index].id,azurerm_network_interface.int-nic[count.index].id]
-    vm_size                      = var.instance_type[var.bigip_license == "" ? 0 : 1]
+    vm_size                      = var.instance_type
     zones                        = [element(var.azs,count.index)]
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
