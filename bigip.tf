@@ -6,7 +6,7 @@ resource "azurerm_virtual_machine" "f5bigip" {
     resource_group_name          = azurerm_resource_group.main.name
     primary_network_interface_id = azurerm_network_interface.mgmt-nic[count.index].id
     network_interface_ids        = [azurerm_network_interface.mgmt-nic[count.index].id, azurerm_network_interface.ext-nic[count.index].id,azurerm_network_interface.int-nic[count.index].id]
-    vm_size                      = var.instance_type
+    vm_size                      = var.instance_type[var.bigip_license == "" ? 0 : 1]
     zones                        = [element(var.azs,count.index)]
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -18,9 +18,9 @@ resource "azurerm_virtual_machine" "f5bigip" {
 
     storage_image_reference {
         publisher = "f5-networks"
-        offer     = var.product
-        sku       = var.image_name
-        version   = var.bigip_version
+        offer     = var.product[var.bigip_license == "" ? 0 : 1]
+        sku       = var.image_name[var.bigip_license == "" ? 0 : 1]
+        version   = var.bigip_version[var.bigip_license == "" ? 0 : 1]
     }
 
     storage_os_disk {
@@ -43,9 +43,9 @@ resource "azurerm_virtual_machine" "f5bigip" {
     }
 
     plan {
-        name          = var.image_name
+        name          = var.image_name[var.bigip_license == "" ? 0 : 1]
         publisher     = "f5-networks"
-        product       = var.product
+        product       = var.product[var.bigip_license == "" ? 0 : 1]
     }
 
     tags = {

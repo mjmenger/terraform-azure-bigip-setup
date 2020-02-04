@@ -32,3 +32,5 @@ all:
           juiceshop_virtual_address: "${juiceshop_virtual_ip}" # the ip address that will become the listener (virtual server) of the juice shop application
           grafana_virtual_address: "${grafana_virtual_ip}" # the ip address that will become the listener (virtual server) of the grafana application
           log_pool: "${log_pool}" # the ip address of the virtual server and looging pool that the LTM Request Policy and ASM Logs can target
+          %{ if bigip_license != "" }bigip_license: "${bigip_license}"
+          %{ endif }

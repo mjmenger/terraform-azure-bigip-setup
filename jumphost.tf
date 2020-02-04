@@ -127,7 +127,7 @@ resource "null_resource" "transfer" {
                     bigip_domain           = "${var.region}.compute.internal"
                     bigip_username         = "admin"
                     bigip_password         = random_password.password.result
-                    ec2_key_name           = basename(var.privatekeyfile) 
+                    ec2_key_name           = basename(var.privatekeyfile)
                     ec2_username           = "azureuser"
                     log_pool               = cidrhost(cidrsubnet(var.cidr,8,count.index + 30),250)
                     bigip_external_self_ip = azurerm_network_interface.ext-nic[count.index].private_ip_address # the ip address that the bigip has on the public subnet
@@ -138,6 +138,7 @@ resource "null_resource" "transfer" {
                     appserver_guest_ip     = azurerm_network_interface.app_nic[count.index].private_ip_address
                     appserver_host_ip      = azurerm_network_interface.jh_nic[count.index].private_ip_address   # the ip address that the jumphost has on the public subnet
                     bigip_dns_server       = "8.8.8.8"
+                    bigip_license          = var.bigip_license
                 }
         )
 

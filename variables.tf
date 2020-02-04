@@ -33,9 +33,10 @@ variable "privatekeyfile" {
 # BIGIP Image
 # https://github.com/F5Networks/f5-azure-arm-templates/blob/v7.0.0.2/supported/standalone/1nic/new-stack/payg/azuredeploy.json
 variable instance_type	{ default = "Standard_DS3_v2" }
-variable image_name	{ default = "f5-bigip-virtual-edition-25m-best-hourly" }
-variable product	{ default = "f5-big-ip-best" }
-variable bigip_version	{ default = "14.1.003000" }
+variable image_name	{ default = ["f5-bigip-virtual-edition-25m-best-hourly","f5-big-all-1slot-byol"] } # 0: PAYGO 1: BYOL
+variable product	{ default = ["f5-big-ip-best","f5-big-ip-byol"] } #  0: PAYGO 1: BYOL
+variable bigip_version	{ default = ["14.1.003000", "14.1.200000"] } #  0: PAYGO 1: BYOL
+variable bigip_license { default = "" }
 
 variable "admin_username" {
     description = "BIG-IP administrative user"
