@@ -92,7 +92,7 @@ resource "azurerm_network_security_group" "management_sg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
-        source_address_prefix      = "*"
+        source_address_prefix      = var.allowed_mgmt_cidr
         destination_address_prefix = "*"
     }
 
@@ -104,10 +104,33 @@ resource "azurerm_network_security_group" "management_sg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "443"
-        source_address_prefix      = "*"
+        source_address_prefix      = var.allowed_mgmt_cidr
         destination_address_prefix = "*"
     }
 
+    security_rule {
+        name                       = "SSH-internal"
+        priority                   = 1003
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = var.cidr
+        destination_address_prefix = "*"
+    }
+
+    security_rule {
+        name                       = "HTTPS-internal"
+        priority                   = 1004
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "443"
+        source_address_prefix      = var.cidr
+        destination_address_prefix = "*"
+    }
 
     tags = {
         environment = var.environment
