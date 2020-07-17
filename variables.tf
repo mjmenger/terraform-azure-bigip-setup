@@ -12,6 +12,10 @@ variable "cidr" {
     default = "10.0.0.0/16"
 }
 
+variable "allowed_mgmt_cidr" {
+    default = "127.0.0.1/32"
+}
+
 variable "environment" {
     default = "demo"
 }
@@ -35,7 +39,7 @@ variable "privatekeyfile" {
 variable instance_type	{ default = "Standard_DS3_v2" }
 variable image_name	{ default = ["f5-bigip-virtual-edition-25m-best-hourly","f5-big-all-1slot-byol"] } # 0: PAYGO 1: BYOL
 variable product	{ default = ["f5-big-ip-best","f5-big-ip-byol"] } #  0: PAYGO 1: BYOL
-variable bigip_version	{ default = ["14.1.003000", "14.1.200000"] } #  0: PAYGO 1: BYOL
+variable bigip_version	{ default = ["14.1.206000", "14.1.206000"] } #  0: PAYGO 1: BYOL
 variable bigip_license { default = "" }
 
 variable "admin_username" {
